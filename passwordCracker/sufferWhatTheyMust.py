@@ -26,7 +26,7 @@ for line in passwordFile:
         if(line.split(':')[0].upper() == hashUserNameTuple[0].upper()):
             if(offest == 0):
                 print("Found previously cracked username(s)/passwords:")
-            print(hashUserNameTuple[1] + ":" + line.split(':')[1])
+            print(hashUserNameTuple[1] + ":" + line.split(':')[1].strip())
             hashUserNameTupleList.pop(shadowCount)
             offest += 1
         shadowCount += 1
@@ -172,3 +172,92 @@ print("Finished cracking dictionary passwords in %.2f seconds." % (endTime-start
 print(str(len(hashUserNameTupleList)),"passwords were not cracked, the uncracked user(s) are:")
 for hashUserNameTuple in hashUserNameTupleList:
     print("\t" + hashUserNameTuple[1])
+passwordFile.flush()
+response = input("Would you like to continue in incremental mode?(this mode will check all possiable ascii combinations and may never terminate) y/n?")
+if(response.strip() == 'y'):
+    startTime = time.time()
+    for numOfChars in range(1,6):
+        for char1 in range(32,127):
+            if(numOfChars == 1):
+                # print(chr(char1))
+                bytepass = str(chr(char1)).strip().encode('utf-8')
+                m = hashlib.md5()
+                m.update(bytepass)
+                hashedPass = m.hexdigest()
+                shadowCount = 0
+                for hashUserNameTuple in hashUserNameTupleList:#check each guess across all passhashes given
+                    if(hashedPass.lower() == hashUserNameTuple[0].lower()):#if this pass is a collison with user pass
+                        print("\t" + str(hashUserNameTuple[1]) + ":" + str(bytepass).split('\'')[1])
+                        passwordFile.write(str(hashedPass).upper() + ":" + str(chr(char1)) + "\n" )
+                        passwordFile.flush()
+                        hashUserNameTupleList.pop(shadowCount)
+                    shadowCount += 1
+            else:
+                for char2 in range(32,127):
+                    if(numOfChars == 2):
+                       # print(chr(char1) + chr(char2))
+                       bytepass = str(chr(char1) + chr(char2)).strip().encode('utf-8')
+                       m = hashlib.md5()
+                       m.update(bytepass)
+                       hashedPass = m.hexdigest()
+                       shadowCount = 0
+                       for hashUserNameTuple in hashUserNameTupleList:#check each guess across all passhashes given
+                           if(hashedPass.lower() == hashUserNameTuple[0].lower()):#if this pass is a collison with user pass
+                               print("\t" + str(hashUserNameTuple[1]) + ":" + str(bytepass).split('\'')[1])
+                               passwordFile.write(str(hashedPass).upper() + ":" + str(chr(char1) + chr(char2)) + "\n" )
+                               passwordFile.flush()
+                               hashUserNameTupleList.pop(shadowCount)
+                           shadowCount += 1
+                       pass
+                    else:
+                        for char3 in range(32,127):
+                            if(numOfChars == 3):
+                               # print(chr(char1) + chr(char2) + chr(char3))
+                               bytepass = str(chr(char1) + chr(char2) + chr(char3)).strip().encode('utf-8')
+                               m = hashlib.md5()
+                               m.update(bytepass)
+                               hashedPass = m.hexdigest()
+                               shadowCount = 0
+                               for hashUserNameTuple in hashUserNameTupleList:#check each guess across all passhashes given
+                                   if(hashedPass.lower() == hashUserNameTuple[0].lower()):#if this pass is a collison with user pass
+                                       print("\t" + str(hashUserNameTuple[1]) + ":" + str(bytepass).split('\'')[1])
+                                       passwordFile.write(str(hashedPass).upper() + ":" + str(chr(char1) + chr(char2) + chr(char3)) + "\n" )
+                                       passwordFile.flush()
+                                       hashUserNameTupleList.pop(shadowCount)
+                                   shadowCount += 1
+                            else:
+                                for char4 in range(32,127):
+                                    if(numOfChars == 4):
+                                       # print(chr(char1) + chr(char2) + chr(char3) + chr(char4))
+                                       bytepass = str(chr(char1) + chr(char2) + chr(char3) + chr(char4)).strip().encode('utf-8')
+                                       m = hashlib.md5()
+                                       m.update(bytepass)
+                                       hashedPass = m.hexdigest()
+                                       shadowCount = 0
+                                       for hashUserNameTuple in hashUserNameTupleList:#check each guess across all passhashes given
+                                           if(hashedPass.lower() == hashUserNameTuple[0].lower()):#if this pass is a collison with user pass
+                                               print("\t" + str(hashUserNameTuple[1]) + ":" + str(bytepass).split('\'')[1])
+                                               passwordFile.write(str(hashedPass).upper() + ":" + str(chr(char1) + chr(char2) + chr(char3) + chr(char4)) + "\n" )
+                                               passwordFile.flush()
+                                               hashUserNameTupleList.pop(shadowCount)
+                                           shadowCount += 1
+                                    else:
+                                        for char5 in range(32,127):
+                                            # print(chr(char1) + chr(char2) + chr(char3) + chr(char4) + chr(char5))
+                                            bytepass = str(chr(char1) + chr(char2) + chr(char3) + chr(char4) + chr(char5)).strip().encode('utf-8')
+                                            m = hashlib.md5()
+                                            m.update(bytepass)
+                                            hashedPass = m.hexdigest()
+                                            shadowCount = 0
+                                            for hashUserNameTuple in hashUserNameTupleList:#check each guess across all passhashes given
+                                                if(hashedPass.lower() == hashUserNameTuple[0].lower()):#if this pass is a collison with user pass
+                                                    print("\t" + str(hashUserNameTuple[1]) + ":" + str(bytepass).split('\'')[1])
+                                                    passwordFile.write(str(hashedPass).upper() + ":" + str(chr(char1) + chr(char2) + chr(char3) + chr(char4) + chr(char5)) + "\n" )
+                                                    passwordFile.flush()
+                                                    hashUserNameTupleList.pop(shadowCount)
+                                                shadowCount += 1
+
+
+        endTime = time.time()
+        print("Finished all " + str(numOfChars) + " char passwords in " + str(endTime-startTime) + " seconds.")
+    passwordFile.close()
