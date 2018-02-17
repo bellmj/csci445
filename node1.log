@@ -1,0 +1,371 @@
+Last login: Sat Feb 17 15:30:25 on ttys003
+Matthews-MacBook-Pro:~ matt$ ssh -i ~/.ssh/id_geni_ssh_rsa bellmj@pc3.geni.it.cornell.edu -p 27690
+The authenticity of host '[pc3.geni.it.cornell.edu]:27690 ([192.122.236.82]:27690)' can't be established.
+RSA key fingerprint is SHA256:exbTjGZYL7UYeXT7tDdxEdyKwomc/HTDjRN8EBd6aFI.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[pc3.geni.it.cornell.edu]:27690,[192.122.236.82]:27690' (RSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-75-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+echo hello
+
+exit
+^Z^bellmj@node-1:~$ 
+bellmj@node-1:~$ echo hello world
+hello world
+bellmj@node-1:~$ mkdir ~/.bitcoin  
+bellmj@node-1:~$ echo "rpcuser=test\nrpcpassword=test\n" > ~/.bitcoin/bitcoin.conf  
+bellmj@node-1:~$ bitcoind -regtest -daemon
+Bitcoin server starting
+bellmj@node-1:~$ bitcoin-cli -regtest addnode node-0 onetry  
+bellmj@node-1:~$ bitcoin-cli -regtest addnode node-1 onetry  
+bellmj@node-1:~$ bitcoin-cli -regtest addnode node-2 onetry  
+bellmj@node-1:~$ bitcoin-cli -regtest addnode node-3 onetry  
+bellmj@node-1:~$ bitcoin-cli -regtest addnode node-4 onetry  
+bellmj@node-1:~$ bitcoin-cli -regtest getblockcount 
+1
+bellmj@node-1:~$ bitcoin-cli -regtest generate 20 
+[
+  "1f61b073d5c68ec8a3f56c25d476529cfea87ecc98390eb8e5666da91270220a", 
+  "12b64a8cb63be3bb2c50e68fafb49cbd80b7e85bc3fb3389ce4a39aa5cdce5cd", 
+  "604302ebf7e39291250536e340bd8142d621db36ed3e18177bce9713a31f406a", 
+  "5b4c7b33d4995f2119624324e3f47a532c2b9c0caacebe6f832e750e74fbb631", 
+  "0391e764aa5b3e7de7c2f24924883203d2ce12d2ed877e8db5ad9bc3de635a12", 
+  "203a5149c55fa7ff3106a93f95100eaa11f3f34f339f70919b22d514ab3b41d5", 
+  "1b7121738aa10b35b0e13de3d701da6d09fddb2e21846bf6fe02fbeb33f97b5d", 
+  "7675cc873061b35129056f15699ae5f911d8d52f95199537f060f72e862da5b2", 
+  "20ec6a487843fe2dc006cdcc594d09e6b658c88bf45ddf98ebafc22f66589971", 
+  "0beb863cea3bdc832cb8b5e067656e674c3cf593725b8cdab1d0b0b0df9091cc", 
+  "49abda814cb397677edff12da3396f0b7b3457b9059d21353d6bb8dc7a23592a", 
+  "06bbc644d4ed8079400db587b4c3e705671b01a9ece01e27791af0c26455f8bb", 
+  "2791876c7747fd6795d9f22a08a05863b7b4ad803217983cacb33c594c6864c0", 
+  "675f681ea16c2ca75e0f483fe9a7b0b69cdb1e270d2feb1e9c67314824acf54b", 
+  "673cf12c75a8134a3f7925164106426497b7dbc159d68533f6b34bc5c9ab9f03", 
+  "4cd652e3dfb43e49ae073867722da96f8d0381db4652c5d694e3f011a8f59e81", 
+  "5727b68b1dec2bb6cac70764595721fea7b038446b2f279af4ecd607ef01a140", 
+  "11d3b6eb53dbd818a8a62183048a4e03ded828a795c366d80eff556e83213ef3", 
+  "2b03631c9653f17e778387803d4276233312bee8e7e3ef00ce430b5dd812516c", 
+  "402db7125f675d12f44c889e0c35b90d81e1fd5ac9f8fdeb8e02c876a88c50b0"
+]
+bellmj@node-1:~$ bitcoin-cli -regtest getblockcount 
+101
+bellmj@node-1:~$ bitcoin-cli -regtest getblockcount 
+101
+bellmj@node-1:~$ bitcoin-cli -regtest getblockhash 121 
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-1:~$ 
+bellmj@node-1:~$ bitcoin-cli -regtest getbalance
+0.00000000
+bellmj@node-1:~$ bitcoin-cli -regtest generate 6
+[
+  "3632a70a7c71bd7332c8ddf8e8a710c47394d12ba6f3640cf549c1d49c39a261", 
+  "73489db20fca68a3f08e4e2f38e89a2d02ae5010b91220df734e9bf4fcecd305", 
+  "1bdfea8499742706bd67cf7c6e854d46b6c021c08303ae5335a960257bc97e92", 
+  "1d2b3c5e2e4e79533085f47c8749d3a1018fc15b4a8e56f552d79366a3c79c0d", 
+  "0b0ecbb5c3dfefe897f38d1880fca4a81e20603967875da673ba325d3e51116e", 
+  "717f4baeb6ee9a8858045de74e7db96484b5baf9691f6b447efb13fa7db8ba11"
+]
+bellmj@node-1:~$ bitcoin-cli -regtest getbalance
+0.00000000
+bellmj@node-1:~$ bitcoin-cli -regtest getbalance
+1300.00003840
+bellmj@node-1:~$ bitcoin-cli -regtest listunspent
+[
+  {
+    "txid": "7b8dc1b981b008ac3122bc66a2a836ffcb5bd91e558f8985fdfe9e252516bb26",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 157,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "37f3e919fce3ed8ed72f0e9bc322f2a658d39f601e0953bafc97541cc8a8f133",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 164,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "174e36861b8f85c92438ccb8b3bf394563f9e3fe72d0cf835fe4251ae73d2b43",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 154,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "191a3f2982bfd423da770c3536668feca422c25fc61312c16a98cb07aed74145",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 152,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "b5f61432f6bdfc7812deae95e258dbabfdcb4fcc84a83b81d6c7ff1547f79055",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00000000,
+    "confirmations": 103,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "47502965b8c964e0575886fa7d2537ed2fb543148f0974e034c106ba9415635b",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 163,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "9d09b3bf30d3331ac674ca4dcbefdf2101ca43f02fcf478655ef7325dc946c5c",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 153,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "746c76f4040d291090f069f1382bd375328b61b587a5a4adf6c04a05af865d66",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00003840,
+    "confirmations": 106,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "fc7f501116b5b5a15951d808195d46d222058c4a5bf3e5dd0aad56ac733aeb67",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 156,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "a69e4f61deb275ac35132ec3f858435835cce3dc1a1380879133855c280c2072",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 158,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "6ad5f5791e456b80b19fecc9d99da59f9e4303c55a883e9c14b6c5ffe49d157b",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 166,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "df41cac60f5d055ea50c5388e9a1ca60bb31c9214e208219c969dbdc1b05aa82",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 159,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "69bb2744340ffead5a0d782d73cc8892c3c9fff60a822a3705731f1944300189",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00000000,
+    "confirmations": 105,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "68218f4250e71312c912317e84457799a9672fbb6778f1a792b0c5e0db126694",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 150,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "6727f6a986ffce4b60968a53666f22f2ced51a10b782161816a944c800280098",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 161,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "58e71b7118f012c696b0e13a8c93601d6ee22c13d5a8aae489ca69a0871b86a3",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 165,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "3e185ec03fb95160f4a9e3ad6b96fe89eb7391bc202b48e8b74890b4479492ab",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 162,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "99a89ddd9b14ca5250fe121ee8825fa425a99afc5d80422a6ad701722cd1deca",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00000000,
+    "confirmations": 101,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "b1a5a3c9d43cea53bf26cb147c2f415f38c0ca577552524517deea6d2329d8d4",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 149,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "0c707804e195b82e7399b18a4b5ab50c9a3ecde06d6b43bbedc95fbd0572a2e2",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 167,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "3d34408907c760f368e709051b91219f3724bca9ab570f84c3de98d2823bf9e3",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 151,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "c5a66e528dbc8b6d773262d336784f2a039c341bd8d5f2b8407235c6a51e7ee4",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00000000,
+    "confirmations": 102,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "9e6ee47fb41370008d17b8367c8fd71def42494d69c7f9c4e870a174925116ea",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 155,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "e7c17c7065a48fb60ac4bf46e735563a36cd2e5749e5c1d20754ed98f29f6bf5",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 148,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "5d202321aafb78dbc143e517543e761a859e67589e2ed744508b29f8d00d9df5",
+    "vout": 0,
+    "address": "n4b3SBUsDHvWWv4naRNAAW4v3sX7YXJ5f9",
+    "scriptPubKey": "210356bfd32b1148c15f092385581dfb4be62dc7bc6c962879891351934aa35e81eeac",
+    "amount": 50.00000000,
+    "confirmations": 104,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }, 
+  {
+    "txid": "a1cf4d2f8756ff86e6a21c5b064bffbe26e9ec7ce8f15e0ba8c3aeec32aa34f7",
+    "vout": 0,
+    "address": "n3LhrPe1YhNPuLe9Ge3o3zuZMU6vFA8gGx",
+    "scriptPubKey": "21028803705c70e849ef2d4a6dfb33686982bd2791c1544d843c5273ee2fcac9a524ac",
+    "amount": 50.00000000,
+    "confirmations": 160,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }
+]
+bellmj@node-1:~$ 

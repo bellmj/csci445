@@ -1,0 +1,483 @@
+Last login: Sat Feb 17 07:59:33 on ttys000
+Matthews-MacBook-Pro:~ matt$ ssh -i ~/.ssh/id_geni_ssh_rsa bellmj@pc1.geni.it.cornell.edu -p 27690
+Saving password to keychain failed
+Saving password to keychain failed
+Saving password to keychain failed
+Permission denied (publickey).
+Matthews-MacBook-Pro:~ matt$ ssh -i ~/.ssh/id_geni_ssh_rsa bellmj@pc1.geni.it.cornell.edu -p 27690
+Saving password to keychain failed
+Identity added: /Users/matt/.ssh/id_geni_ssh_rsa ((null))
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-75-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+Last login: Tue Feb 13 12:34:17 2018 from 153.9.254.166
+bellmj@node-0:~$ mkdir ~/.bitcoin
+bellmj@node-0:~$ echo "rpcuser=test\nrpcpassword=test\n" > ~/.bitcoin/bitcoin.conf
+bellmj@node-0:~$ bitcoind -regtest -daemon
+Bitcoin server starting
+bellmj@node-0:~$ bitcoin-cli -regtest addnode node-0 onetry
+bellmj@node-0:~$ bitcoin-cli -regtest addnode node-1 onetry
+bellmj@node-0:~$ bitcoin-cli -regtest addnode node-2 onetry
+bellmj@node-0:~$ bitcoin-cli -regtest addnode node-3 onetry
+bellmj@node-0:~$ bitcoin-cli -regtest addnode node-4 onetry
+bellmj@node-0:~$ bitcoin-cli -regtest getpeerinfo
+[
+  {
+    "id": 2,
+    "addr": "node-1",
+    "addrbind": "10.10.1.3:60032",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900064,
+    "lastrecv": 1518900064,
+    "bytessent": 453,
+    "bytesrecv": 429,
+    "conntime": 1518900064,
+    "timeoffset": 1,
+    "pingtime": 0.001378,
+    "minping": 0.001378,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": false,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "getheaders": 93,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getheaders": 93,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 3,
+    "addr": "node-2",
+    "addrbind": "10.10.1.3:49542",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900064,
+    "lastrecv": 1518900064,
+    "bytessent": 360,
+    "bytesrecv": 429,
+    "conntime": 1518900064,
+    "timeoffset": 1,
+    "pingtime": 0.001289,
+    "minping": 0.001289,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": false,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getheaders": 93,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 4,
+    "addr": "node-3",
+    "addrbind": "10.10.1.3:38272",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900064,
+    "lastrecv": 1518900064,
+    "bytessent": 360,
+    "bytesrecv": 429,
+    "conntime": 1518900064,
+    "timeoffset": 0,
+    "pingtime": 0.002003,
+    "minping": 0.002003,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": false,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getheaders": 93,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 5,
+    "addr": "node-4",
+    "addrbind": "10.10.1.3:51934",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900064,
+    "lastrecv": 1518900064,
+    "bytessent": 360,
+    "bytesrecv": 429,
+    "conntime": 1518900064,
+    "timeoffset": 1,
+    "pingtime": 0.001945,
+    "minping": 0.001945,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": false,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getheaders": 93,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 6,
+    "addr": "10.10.1.2:51356",
+    "addrbind": "10.10.1.3:18444",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900068,
+    "lastrecv": 1518900068,
+    "bytessent": 336,
+    "bytesrecv": 360,
+    "conntime": 1518900068,
+    "timeoffset": 1,
+    "pingtime": 0.002066,
+    "minping": 0.002066,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": true,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 7,
+    "addr": "10.10.1.1:51862",
+    "addrbind": "10.10.1.3:18444",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900069,
+    "lastrecv": 1518900069,
+    "bytessent": 336,
+    "bytesrecv": 360,
+    "conntime": 1518900069,
+    "timeoffset": 1,
+    "pingtime": 0.001262,
+    "minping": 0.001262,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": true,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 8,
+    "addr": "10.10.3.2:53766",
+    "addrbind": "10.10.1.3:18444",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900071,
+    "lastrecv": 1518900071,
+    "bytessent": 336,
+    "bytesrecv": 360,
+    "conntime": 1518900071,
+    "timeoffset": 0,
+    "pingtime": 0.001187,
+    "minping": 0.001187,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": true,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  },
+  {
+    "id": 9,
+    "addr": "10.10.2.1:48024",
+    "addrbind": "10.10.1.3:18444",
+    "services": "000000000000000d",
+    "relaytxes": true,
+    "lastsend": 1518900072,
+    "lastrecv": 1518900072,
+    "bytessent": 336,
+    "bytesrecv": 360,
+    "conntime": 1518900072,
+    "timeoffset": 1,
+    "pingtime": 0.001696,
+    "minping": 0.001696,
+    "version": 70015,
+    "subver": "/Satoshi:0.15.1/",
+    "inbound": true,
+    "addnode": false,
+    "startingheight": 0,
+    "banscore": 0,
+    "synced_headers": -1,
+    "synced_blocks": -1,
+    "inflight": [
+    ],
+    "whitelisted": false,
+    "bytessent_per_msg": {
+      "feefilter": 32,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    },
+    "bytesrecv_per_msg": {
+      "feefilter": 32,
+      "getaddr": 24,
+      "ping": 32,
+      "pong": 32,
+      "sendcmpct": 66,
+      "sendheaders": 24,
+      "verack": 24,
+      "version": 126
+    }
+  }
+]
+bellmj@node-0:~$ bitcoin-cli -regtest generate 1
+[
+  "2ce4d5395023efcc6db7cdda5f12f5ee401049016ee814547fa56b93ed2e9282"
+]
+bellmj@node-0:~$ bitcoin-cli -regtest getbalance
+0.00000000
+bellmj@node-0:~$ bitcoin-cli -regtest generate 20
+[
+  "135ae3f83904c89558a83958995b73c5a6d35957ff4378078cca309aaa4343f8",
+  "1259e12f6b38281ea1f9f6cc4ca51f5e92566be0b321d7457671ea516564f971",
+  "779fdc0de1b15ae6f94367dc46ddd3f60c3ac0810efa7a6a1d3c90140a8f6f3f",
+  "7c18a3446e59f3a1ad1fa9687649d805f4cc2d9fac106d91bff562fce16f563c",
+  "347385e36d4a1cdcaa864f9b29d85cac87d7d65d9d71f361e1f4bdadc40a9314",
+  "20aeba5943e36fa093801943d5abc53af04ea7c8ff25b255535cc26495d9e759",
+  "01bb9a07eee6b728bfd8112719d826cd4f6fd35cd6fc19b76cc4336f3b21d6a4",
+  "12f99828df17ba964b9ba1eeec033a0c00d9d6530c354c50c3cbcbbf1c52f513",
+  "781b73b55118bae166a32f5d32519ceced0d045fdeb07be70be5f15860247541",
+  "4605bb0fef422e5e65addb720e65f82ee93a2aab64ed1032993dab051e09ab27",
+  "52b04ced6be9183ba580ff70b16614480b74b77a24f5ec12bd4f89b054779af3",
+  "39f7ddac2531f0c914c265ca368372d17f8a20fb2579704619e33afdc9809f66",
+  "1b4ddce7adef3780121857b1f8fab815a66a06532ee31bdd2d5be3e5e9838ade",
+  "04450709b7322bfa898164b8b1764080887e9672ce4f0c5120263c3808efc813",
+  "00b247302f8ee5f5f1e8c87c399c06f5c7ac74088fef158e71d6b0d4a2bb8ab7",
+  "5ed73d9e15645b8f7bd15e57580a53caa26c0691901fb787e01a00a9a4c7d04d",
+  "73594be348f6bc67beefbb9ae1651d3140203f7eb76641f95a96d7ee65077c89",
+  "356d183e55313f0a9e82f6125935bcc9f8aeb938e035b48284b824bbc97fce6e",
+  "6e9fcbb212a0133fa7ceeb0e3b421bd9d8fc21436a648405d4ee625e3319752e",
+  "337862ff744d29234e3ad31c8b03c4650a755b44110e00a73b8825b72ac2094c"
+]
+bellmj@node-0:~$ bitcoin-cli -regtest getbalance
+50.00000000
+bellmj@node-0:~$ bitcoin-cli -regtest listunspent
+[
+  {
+    "txid": "2b9d58c91bdf561478fae679eba826426b6e5ade0ddb63ae43ac681ffe082549",
+    "vout": 0,
+    "address": "mv3pSN8ZfBLhCrqJofUSKmPgeWtkBeNNAU",
+    "scriptPubKey": "21024bf81e9bdcf1620b74ebf018c6082a94de38f404b14e2b0e2acf7f50bddc851bac",
+    "amount": 50.00000000,
+    "confirmations": 101,
+    "spendable": true,
+    "solvable": true,
+    "safe": true
+  }
+]
+bellmj@node-0:~$ bitcoin-cli -regtest getblockcount
+101
+bellmj@node-0:~$ bitcoin-cli -regtest generate 20
+[
+  "3f03340db1ec12ec0142927a50dd20a4967163adba4ef1494f9c0cd237019af6",
+  "0f0d2b34ba227dcbb5f59e66ed07e14b32fa204afb0e16071f4f0387da7bd2c1",
+  "1909cfcd481ffb6ca6de539713185f23a7464a050890001089adbe9f997ed5b3",
+  "4481d2b3828bf233e6ba72510045a6777a69026a1fcbb9d51d4012d14eee8f1b",
+  "28c2081de4d7aab2390133426ce638b57fc7b46574727883ea5a7dbfd9e1d499",
+  "03e3e454e4151493cd01cf4ba79d0e1be2a31550d4e68b56ea842b41214eac6b",
+  "3304082254eebcda0297f2851ddee9c22e558afe5139ffc2a2702e664fb23e59",
+  "36e2ea7e97347831c16e87f7e9d131b8deb9130413f1aa0bc66b24b59b777352",
+  "16050af5690e0eb6335809a5b8ce5288da7850ae0154d921f047b3a51ef74334",
+  "2ee381a02b6cfd8dd87c27c3efd3ab887c6acd37795099d1ae3a7709014a93e7",
+  "4cc3ab2308d6fc26952187a4788b4b56fd76ada9461354099de43e0654f0bdd2",
+  "51396503d68caa93c85d36c4123aab38f094f18a45d5e359c51fe73b704f0faa",
+  "068702c4566fc7a3dc1f5f64f66e22336cb1b3c12ff7acef96ad8df7d3d7fa48",
+  "55481351f64e2d0aa4c9ced411fe61d73bdacdde56ca28b6da6dc349cc1a1fe3",
+  "70e09b45cdbdba8731ed0eeea099a280f70508e64bb9f0574eee2322b878788a",
+  "426c7060ab42e93c796b71e345a94a519d5685f5ec20567172d583a02ebc79e4",
+  "160821e3d7ec771e615df8cb599e7592d28c2af32a7abef38360ec68decce448",
+  "06ec449a558535627fc026296a3c93395a74994f2423e29551738dcfe9b95081",
+  "56bdba15e8ab79c303e8c49e55d4ba85be4accd9802aaca038ec28dc5ab465a4",
+  "4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3"
+]
+bellmj@node-0:~$ bitcoin-cli -regtest getblockcount
+121
+bellmj@node-0:~$ bitcoin-cli -regtest getblockhash 121
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-0:~$ bitcoin-cli -regtest getblockhash 121
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-0:~$ bitcoin-cli -regtest generate 1
+[
+  "0360d7f04674f54972f847b3d4f139aad4ae4a8139e2aeade7bb4eca15362510"
+]
+bellmj@node-0:~$ bitcoin-cli -regtest getblockcount
+122
+bellmj@node-0:~$ bitcoin-cli -regtest getblockhash 121
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-0:~$ bitcoin-cli -regtest getbalance
+50.00000000
+bellmj@node-0:~$ bitcoin-cli -regtest sendtoaddress n4avXCyvkSWPNc2z62S1uRX3QKa3mXN3Cv 10.00
+35c15a93d7c8c58da2f42bd868c88b777018d9a05c8936d4764f3be847944c9b
+bellmj@node-0:~$ bitcoin-cli -regtest getbalance
+39.99996160
+bellmj@node-0:~$

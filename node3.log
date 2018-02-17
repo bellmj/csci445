@@ -1,0 +1,107 @@
+Last login: Sat Feb 17 15:30:11 on ttys001
+Matthews-MacBook-Pro:~ matt$ ssh -i ~/.ssh/id_geni_ssh_rsa bellmj@pc2.geni.it.cornell.edu -p 27691
+The authenticity of host '[pc2.geni.it.cornell.edu]:27691 ([192.122.236.81]:27691)' can't be established.
+RSA key fingerprint is SHA256:exbTjGZYL7UYeXT7tDdxEdyKwomc/HTDjRN8EBd6aFI.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[pc2.geni.it.cornell.edu]:27691,[192.122.236.81]:27691' (RSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-75-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+bellmj@node-3:~$ mkdir ~/.bitcoin  
+bellmj@node-3:~$ echo "rpcuser=test\nrpcpassword=test\n" > ~/.bitcoin/bitcoin.conf  
+bellmj@node-3:~$ bitcoind -regtest -daemon
+Bitcoin server starting
+bellmj@node-3:~$ bitcoin-cli -regtest addnode node-0 onetry  
+bellmj@node-3:~$ bitcoin-cli -regtest addnode node-1 onetry  
+bellmj@node-3:~$ bitcoin-cli -regtest addnode node-2 onetry  
+bellmj@node-3:~$ bitcoin-cli -regtest addnode node-3 onetry  
+bellmj@node-3:~$ bitcoin-cli -regtest addnode node-4 onetry  
+bellmj@node-3:~$ bitcoin-cli -regtest getblockcount 
+1
+bellmj@node-3:~$ bitcoin-cli -regtest generate 20 
+[
+  "743b17b496fbed86443420991c7b96c4a4dd2b6522c45788b8fe95f662525b84", 
+  "4c874f20baf6e3ba7c8eead778d720882cd0031dcdf41c8b14cf6eafd7d0756b", 
+  "2d286c7473b2a2656259936ed2e12e5a2080295e6ebbe253cdf09cb76f7c8929", 
+  "449d493b3b508289768be62908ebe0dd49dc63110e2504b1ebb2a64f8bd99e18", 
+  "1ee665d008998b3c8cbee5770ee28ab6d1eb4494bd75706acbc83e4f5175b641", 
+  "656494ad7fad6550c2251e34eff6329e35363280bb2aa06e1fd041e203eed320", 
+  "108dcd7d5842364b50cbfe482fb4fb8880e207754c5f42913a392933edd097c8", 
+  "719ffe0399fb517ea53042b93ebf6c25584bff4369278f8bf556bb5983648537", 
+  "235d8b3cfece235ae592931156c8ed7e6fc174190f7e381a69a11a411cda6a7b", 
+  "46a72c917b55178977483b7f652a4744618a24e0c6cc08bbbda97d659aac03ce", 
+  "66b9034e3dc686edd21b1d9ec509058287b3a06c371411b3daa2d4bbbd4477d7", 
+  "31ec4567b1c5c240fc39b67fc1e69a62917d911aa96112158c78ac31379a02be", 
+  "7d9c2331373d4aacc1bc1e06881c2d03435d4a7d5ba87cef1d373c44adab6e48", 
+  "2f5fa5349ddc7916a5b740147bb911a4cc322b70d59efb143d319b2211e7aa73", 
+  "0bd7971d53fbb173487f91638f18fdf99636e9418d4f9cad29fc3dce2026f27a", 
+  "37a5ea2f5a2cf86cb671838522a156052477227dcb319505030ed55978bd8554", 
+  "31ac260c604b52a7f300e871d67ac05d5f52feb4a5e2bfd48d532db994d6f63d", 
+  "6c5525dcaaf13aa5acea725d91325c973051870e9f3d26fe713bc21566a3fe66", 
+  "240447c842388294aee1a381e0d8d7190e818a6a6787ae8f3d993f4c18bf4d8e", 
+  "67e33c0a2e66bae51a440e37b0b2431df548d002957450e6bab7463ec7b769e8"
+]
+bellmj@node-3:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 02:15:0e:d6:2b:a6  
+          inet addr:172.17.2.22  Bcast:172.31.255.255  Mask:255.240.0.0
+          inet6 addr: fe80::15:eff:fed6:2ba6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:64337 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:66986 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:12592887 (12.5 MB)  TX bytes:4719255 (4.7 MB)
+
+eth1      Link encap:Ethernet  HWaddr 02:a5:10:86:3e:19  
+          inet addr:10.10.3.2  Bcast:10.10.3.255  Mask:255.255.255.0
+          inet6 addr: fe80::a5:10ff:fe86:3e19/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2914 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2795 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:290674 (290.6 KB)  TX bytes:325309 (325.3 KB)
+
+eth2      Link encap:Ethernet  HWaddr 02:27:d9:a5:13:5e  
+          inet addr:10.10.2.2  Bcast:10.10.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::27:d9ff:fea5:135e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:1871 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1899 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:193271 (193.2 KB)  TX bytes:217540 (217.5 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:132 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:132 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:11611 (11.6 KB)  TX bytes:11611 (11.6 KB)
+
+bellmj@node-3:~$ sudo ifconfig eth1 down
+bellmj@node-3:~$ bitcoin-cli -regtest getblockcount 
+121
+bellmj@node-3:~$ sudo ifconfig eth1 up 
+bellmj@node-3:~$ bitcoin-cli -regtest getblockcount 
+121
+bellmj@node-3:~$ bitcoin-cli -regtest getblockhash 121 
+6ed53375a15bb19061adf613805fee74beb429b2e4d1cfc3624f38c66f654497
+bellmj@node-3:~$ 
+bellmj@node-3:~$ bitcoin-cli -regtest getblockcount  
+122
+bellmj@node-3:~$ bitcoin-cli -regtest getblockhash 121 
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-3:~$ 
+bellmj@node-3:~$ bitcoin-cli -regtest getbalance
+50.00000000
+bellmj@node-3:~$ 

@@ -1,0 +1,152 @@
+Last login: Sat Feb 17 15:30:24 on ttys002
+Matthews-MacBook-Pro:~ matt$ ssh -i ~/.ssh/id_geni_ssh_rsa bellmj@pc2.geni.it.cornell.edu -p 27692
+The authenticity of host '[pc2.geni.it.cornell.edu]:27692 ([192.122.236.81]:27692)' can't be established.
+RSA key fingerprint is SHA256:exbTjGZYL7UYeXT7tDdxEdyKwomc/HTDjRN8EBd6aFI.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[pc2.geni.it.cornell.edu]:27692,[192.122.236.81]:27692' (RSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-75-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+bellmj@node-4:~$ mkdir ~/.bitcoin  
+bellmj@node-4:~$ echo "rpcuser=test\nrpcpassword=test\n" > ~/.bitcoin/bitcoin.conf  
+bellmj@node-4:~$ ls -laG
+total 40
+drwxr-xr-x 5 bellmj 4096 Feb 17 15:37 .
+drwxr-xr-x 5 root   4096 Feb  8 12:43 ..
+-rw-r--r-- 1 bellmj  220 Aug 31  2015 .bash_logout
+-rw-r--r-- 1 bellmj 3771 Aug 31  2015 .bashrc
+drwxr-xr-x 2 bellmj 4096 Feb 17 15:37 .bitcoin
+drwx------ 2 bellmj 4096 Feb 17 15:35 .cache
+-rw-r--r-- 1 bellmj   18 Feb  8 12:43 .forward
+-rw-r--r-- 1 bellmj 2181 Nov  2  2015 .kshrc
+-rw-r--r-- 1 bellmj  655 Jun 24  2016 .profile
+drwx------ 2 bellmj 4096 Feb 13 11:38 .ssh
+bellmj@node-4:~$ c .bitcoin/
+lc: command not found
+bellmj@node-4:~$ ls
+bellmj@node-4:~$ ls -lsG
+total 0
+bellmj@node-4:~$ ls -laG
+total 40
+drwxr-xr-x 5 bellmj 4096 Feb 17 15:37 .
+drwxr-xr-x 5 root   4096 Feb  8 12:43 ..
+-rw-r--r-- 1 bellmj  220 Aug 31  2015 .bash_logout
+-rw-r--r-- 1 bellmj 3771 Aug 31  2015 .bashrc
+drwxr-xr-x 2 bellmj 4096 Feb 17 15:37 .bitcoin
+drwx------ 2 bellmj 4096 Feb 17 15:35 .cache
+-rw-r--r-- 1 bellmj   18 Feb  8 12:43 .forward
+-rw-r--r-- 1 bellmj 2181 Nov  2  2015 .kshrc
+-rw-r--r-- 1 bellmj  655 Jun 24  2016 .profile
+drwx------ 2 bellmj 4096 Feb 13 11:38 .ssh
+bellmj@node-4:~$ cd .bitcoin/
+bellmj@node-4:~/.bitcoin$ l
+bitcoin.conf
+bellmj@node-4:~/.bitcoin$ ls -laG
+total 12
+drwxr-xr-x 2 bellmj 4096 Feb 17 15:37 .
+drwxr-xr-x 5 bellmj 4096 Feb 17 15:37 ..
+-rw-r--r-- 1 bellmj   33 Feb 17 15:37 bitcoin.conf
+bellmj@node-4:~/.bitcoin$ nano bitcoin.conf 
+bellmj@node-4:~/.bitcoin$ bitcoind -regtest -daemon
+Bitcoin server starting
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest addnode node-0 onetry  
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest addnode node-1 onetry  
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest addnode node-2 onetry  
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest addnode node-3 onetry  
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest addnode node-4 onetry  
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest getblockcount 
+1
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest generate 20 
+[
+  "42c89e31b856254bf5361356aef765cb82c8208161f0beb4856c3d8d6f8491c1", 
+  "3cdbd49fb0278fc61e93124bf20df08e384b914b45ab974f75382e7d7de0e8c6", 
+  "02cdec0b0373dda043e9ad3c1c915d0a08b882b18b168d5abbecd9aeb01f5f25", 
+  "60f4ec9517228e69f6f035c9e03c381691abc52c987b1e53af0af3d46a96e867", 
+  "346d8350e1256f8600789b11478b574ce55e16d76acfaca05f527d0edffd1daa", 
+  "6683d2fdc7030e78900268e26f46ef47481d86608ea07851950b3abbdf7364f6", 
+  "40d45f79489bc09f28c6121666b13b45de3c2b503c17a70e925a01e21dd2a155", 
+  "1a7c5bf92fcfc502b3d44741a98aa23db4994ed0323805548b9530a8a7e9d679", 
+  "1fd60e7156ab4d28888c70a9a8665c9776269402afe507e5b22601b971d2d542", 
+  "7ea85588c7dc4cfde70c8fdf96e227a74011e4a8500ef6048d2f9f041a88f5e3", 
+  "05f78af473ed31782729aa995ef7d3c4d2b5c0a4309e39387a24b28540bf44eb", 
+  "283e3c13b2ee2b1e90850c96870043bc089d9d5b6ab58d8cf3d1623430377813", 
+  "330834ec4f03101156ec9ae02687b8b82cc308a13ab979d521356b2b406c6722", 
+  "369b2807a253ccab97d695e16cdb7c5d38a0d18cd1263e5e488ddb1c42b8beca", 
+  "3281acf61487656f5cd05d9ec5cf3c8eb2b46a986c1c5df3b80922ea594dcee7", 
+  "2bbdea5e793f55436039c9534d93c381c01519cf8c1774a97ffd68961d44071b", 
+  "585666c3440579b261e799f8bfab73927dfffad1db3e759d760a8ca793f82a83", 
+  "32ad51fca36241138d78c7bb3e8e07ad03684e9e405ff56a55eecd758144f3b7", 
+  "36e14e98bd3b95857473fd5d3f19d200e1b0061490a5d9643bec1f650f3ccc84", 
+  "10322fececb69b553b144fc87ce2a2c6cfb521597767a0f6f90eff7b08599b1e"
+]
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest generate 20
+[
+  "1f756b2d9ae874a9dbf9dc28dd282bc65861cd9b14bceafe401d6cabbce8878a", 
+  "40c382fae86d450d0cccba0a510ce902662b95979c254011e7051dd68741381b", 
+  "326c9e4d0eda6bed52c964847bae11fd258d9c66e9476d06edd959939321124e", 
+  "2a401d9b3ed36f47e867a24af5992c88f298dd0277d56acac8c8df0d53f6dafd", 
+  "0efe867d2844ef7aa6de9271eaf178ca3964a4a321e0b685cc7cf2d58affbf49", 
+  "04d920b0b2f408dd570d36f2bacaba25b45a6dfa67241ef580ac06fb02dc954c", 
+  "37ccc3f8742e02afc915d97d13ec8b519bb3aba12e6324de8d5e43e31e07a3b2", 
+  "7560376eb988899af43c30ce8984678fa2567a5e46136ebbbf32ebdf98a54d09", 
+  "5591a1797606a94e14b119ab65b87b380daa7ac10b32ecba2bf65606b3623d4a", 
+  "45b81a365aaab9a2e169be586463000f3ddf6fcb4790fde0ebdeaff3a3efefeb", 
+  "5e6136d52c833749d73c49b2410122d5c41a2d4b180a340183d35b64e8c210f3", 
+  "79129dd8b4254adf2a6f6463e803ad576418b550c8c90ecc794076baf13c8fa2", 
+  "2a013ac1c6f320748ac655c08ae4e8fc4bab17f472525704f4a4c51b2062ea9d", 
+  "05ba4d56f0fe8570bd6f9303a76b400f7e0298fe7ec11b3765de8b4a3b59069d", 
+  "645d25336df98dd3e43dfb2dbe129a11244ad94dcce31dac9b22c1c9b3fd583d", 
+  "2a64aa1fed45303f7b7f97fcf73746bacc9cdaccb9dc42f1454b6523176ec374", 
+  "734eb1d0b1a32ec1f72457f2b46e4f71912841a49e5b7084a571e9ee972580e4", 
+  "6cb15310793c0fe329e3949a0fc68f4a336afa762dcb3316033b1585209b6789", 
+  "2f14f1508aecff533f850bfa4f905c7cd1f7ad5588394bee1dc845cb1cc7905d", 
+  "6ed53375a15bb19061adf613805fee74beb429b2e4d1cfc3624f38c66f654497"
+]
+bellmj@node-4:~/.bitcoin$ bitcoin-cli -regtest getblockcount 
+121
+bellmj@node-4:~/.bitcoin$ tail -f .bitcoin/regtest/debug.log
+tail: cannot open '.bitcoin/regtest/debug.log' for reading: No such file or directory
+tail: no files remaining
+bellmj@node-4:~/.bitcoin$ cd ..
+bellmj@node-4:~$ tail -f .bitcoin/regtest/debug.log
+2018-02-17 20:47:54 AddToWallet 727900f51f87bad5f5e8a770c0985880400168a068a4bf8af9b3b5e0bfe23f4f  new
+2018-02-17 20:47:54 CreateNewBlock(): block weight: 904 txs: 0 fees: 0 sigops 400
+2018-02-17 20:47:54 UpdateTip: new best=6cb15310793c0fe329e3949a0fc68f4a336afa762dcb3316033b1585209b6789 height=119 version=0x20000000 log2_work=7.9068906 tx=120 date='2018-02-17 20:47:55' progress=1.000000 cache=0.0MiB(119txo)
+2018-02-17 20:47:54 AddToWallet 1055ab7601532d00eeb929ba7c4b489480ce62c29a9b4d87e07ff7792b8f69f2  new
+2018-02-17 20:47:54 CreateNewBlock(): block weight: 904 txs: 0 fees: 0 sigops 400
+2018-02-17 20:47:54 UpdateTip: new best=2f14f1508aecff533f850bfa4f905c7cd1f7ad5588394bee1dc845cb1cc7905d height=120 version=0x20000000 log2_work=7.9188632 tx=121 date='2018-02-17 20:47:56' progress=1.000000 cache=0.0MiB(120txo)
+2018-02-17 20:47:54 AddToWallet 6d59c931373714b3a55efcc1623229a280cfdfd17c66cf2bfdcfd105bcb59481  new
+2018-02-17 20:47:54 CreateNewBlock(): block weight: 904 txs: 0 fees: 0 sigops 400
+2018-02-17 20:47:54 UpdateTip: new best=6ed53375a15bb19061adf613805fee74beb429b2e4d1cfc3624f38c66f654497 height=121 version=0x20000000 log2_work=7.9307373 tx=122 date='2018-02-17 20:47:56' progress=1.000000 cache=0.0MiB(121txo)
+2018-02-17 20:47:54 AddToWallet 173bd3516d3561ed995239351c12a901c5ebd5f43342211bb9052bc022a57098  new
+
+
+^Z
+[1]+  Stopped                 tail -f .bitcoin/regtest/debug.log
+bellmj@node-4:~$ bitcoin-cli -regtest getblockcount 
+121
+bellmj@node-4:~$ bitcoin-cli -regtest getblockhash 121 
+6ed53375a15bb19061adf613805fee74beb429b2e4d1cfc3624f38c66f654497
+bellmj@node-4:~$ bitcoin-cli -regtest getblockcount  
+122
+bellmj@node-4:~$ bitcoin-cli -regtest getblockhash 121 
+4a6abde58f889d62815dccbb186ee7f2ad3c4358c017fe12623f817b0ef604a3
+bellmj@node-4:~$ bitcoin-cli -regtest getbalance
+1000.00000000
+bellmj@node-4:~$ bitcoin-cli -regtest getnewaddress
+n4avXCyvkSWPNc2z62S1uRX3QKa3mXN3Cv
+bellmj@node-4:~$ bitcoin-cli -regtest getbalance
+1000.00000000
+bellmj@node-4:~$ bitcoin-cli -regtest getbalance
+1010.00000000
+bellmj@node-4:~$ 
